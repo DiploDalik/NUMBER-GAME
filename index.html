@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+
+    <title>بازی حدس اعداد</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .gameb {
+            background-color: gray;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            width: 300px;
+        }
+        h2 {
+            margin-top: 0;
+            color: black
+        }
+        input {
+            padding: 10px;
+            font-size: 18px;
+            width: 80px;
+            text-align: center;
+            border: 2px solid blue;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            outline: none;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            font-weight: bolder;
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 5px;
+            transition: 0.2s;
+        
+        }
+        button:hover {
+            background-color: #0000cc;
+            transform: scale(1.05);
+        }
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: black;
+            min-height: 25px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="gameb">
+
+
+    <h2>عدد بین 1 تا 100 را حدس بزن</h2>
+
+
+    <input 
+        type="number" 
+        id="THENUMBER"
+        min="1"
+        max="100"
+        step="1">
+
+
+    <button onclick="check()">حدس بزن</button>
+    <button onclick="newg()">شروع مجدد</button>
+    <p id="RESULT">نتیجه حدس شما</p>
+
+
+    </div>
+
+
+
+    <script>
+
+
+        let random;
+        let gameo = false;
+
+
+        function start() {
+            random = Math.floor(Math.random() * 100) +  1;
+        }
+        start();
+
+
+        function newg() {
+            document.getElementById("THENUMBER").value = ""; 
+            document.getElementById("RESULT").innerHTML = "نتیجه حدس شما";
+            start();
+        }
+        
+
+        function check() {
+
+            if (gameo) { return; }
+
+            let user = document.getElementById("THENUMBER").value;
+            let text = document.getElementById("RESULT");
+
+            if (user.trim() === "") {
+                text.innerHTML = "لطفا حدس خود را وارد کنید";
+                return;
+            }
+
+            user = Number(user);
+            if (!Number.isInteger(user)) {
+                text.innerHTML = "لطفا عدد صحیح وارد کنید"
+                return;
+            }
+
+            if (user < 1 || user > 100) {
+                text.innerHTML = "لطفا عددی بین 1 تا 100 وارد کنید"
+                return;
+            }
+
+            if (user == random) {
+                text.innerHTML = "افرین درسته";
+                gameo = true;
+            }
+            
+            else if (user > random) {
+                text.innerHTML = "پایینتر";
+            }
+            
+            else {
+                text.innerHTML = "بالاتر";
+            }
+
+        }
+
+    </script>
+</body>
+</html>
