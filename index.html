@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>بازی حدس اعداد</title>
+</head>
+
+<body>
+    <div class="gameb">
+
+    <h2 lang="en" dir="ltr">NUMBER-GAME</h2>
+    <h3 lang="en" dir="ltr">BY DIPLODALIK</h3>
+
+    <input 
+        type="number" 
+        id="THENUMBER"
+        min="1"
+        max="100"
+        step="1">
+
+    <button onclick="check()">حدس بزن</button>
+    
+
+    <p id="result">🎮 آماده‌ای؟ یک عدد بین ۱ تا ۱۰۰ حدس بزن!</p>
+
+    <button onclick="newg()" class="start">شروع مجدد</button>
+
+    <div class="counter">
+    <span>🎯تعداد حدس‌ها:  </span>
+    <span id="attempts">0</span>
+</div>
+    </div>
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
